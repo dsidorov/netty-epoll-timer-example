@@ -47,4 +47,7 @@ java -jar lib/epoll-timer-example-1.0-SNAPSHOT.jar
 15:30:00.989 [DEBUG] (422298) PROFILER: woken up, taking a sample
 ...
 ```
-
+7. For reference: re-run the application with disabled Epoll wait threshold, and see how the 2 second timer goes off after every HTTP request:
+```
+java -Dio.netty.channel.epoll.epollWaitThreshold=0 -jar lib/epoll-timer-example-1.0-SNAPSHOT.jar
+```
