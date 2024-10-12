@@ -40,7 +40,7 @@ static void sighandler_alarm(int sig, siginfo_t *info, void *context)
 
     for (i = 0; i < n_sampled; i++) {
         if (sampled[i] == tid) {
-            DEBUG(tid, "woken up, taking a sample");
+            DEBUG(tid, "woke up, taking a sample");
             return;
         }
     }
@@ -103,7 +103,7 @@ JNIEXPORT void JNICALL Java_org_example_EpollTimerExample_startProfiler(JNIEnv *
 
     rc = setitimer(ITIMER_REAL, &it, NULL);
     if (rc < 0) {
-        ERROR(tid, "could not set it: %s", strerror(errno));
+        ERROR(tid, "could not set itimer: %s", strerror(errno));
     }
 }
 

@@ -84,8 +84,10 @@ public class EpollTimerExample {
                     log.info("{} {}", request.method(), request.uri());
 
                     log.info("setting timer: {} {}", TIMER_SEC, TimeUnit.SECONDS);
+                    long startTime = System.nanoTime();
                     ctx.channel().eventLoop().schedule(() -> {
-                        log.info("BEEP!");
+                        long elapsedTime = System.nanoTime() - startTime;
+                        log.info("BEEP! after {}ms", TimeUnit.NANOSECONDS.toMillis(elapsedTime));
                     }, TIMER_SEC, TimeUnit.SECONDS);
 
                     int length = DEFAULT_RESPONSE.readableBytes();
